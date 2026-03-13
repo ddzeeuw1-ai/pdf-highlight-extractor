@@ -26,10 +26,11 @@ services:
       - uploads:/tmp/pdf_highlights_uploads
     restart: unless-stopped
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
-      interval: 30s
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 15s
       timeout: 10s
-      retries: 3
+      retries: 5
+      start_period: 30s
 
   frontend:
     image: node:20-alpine
@@ -40,7 +41,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - VITE_API_URL=http://localhost:8000
+      - VITE_API_URL=
     depends_on:
       backend:
         condition: service_healthy
