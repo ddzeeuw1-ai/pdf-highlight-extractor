@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+*.egg-info/
+dist/
+.env
+
+# Node
+node_modules/
+frontend/dist/
+frontend/.env
+*.local
+
+# macOS
+.DS_Store
+
+# Uploads (never commit PDFs)
+/tmp/
+uploads/
+
+# IDE
+.vscode/
+.idea/
+*.swp
